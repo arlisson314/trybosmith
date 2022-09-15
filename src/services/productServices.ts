@@ -1,10 +1,9 @@
 import productModel from '../models/productModel';
-import { IAddProduct } from '../types';
 
 const productService = {
-  async getAll(): Promise<IAddProduct[]> {
+  async getAll() {
     const result = await productModel.getAll();
-    return result;
+    return { code: 200, data: result };
   },
 };
 
