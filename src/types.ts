@@ -7,3 +7,10 @@ export interface IAddProduct {
 export interface IgetProducts extends IAddProduct {
   orderId: number | null
 }
+
+export interface IUser {
+  username: string,
+  classe: string,
+  level: number,
+  password: string
+}
