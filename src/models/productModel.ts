@@ -6,7 +6,7 @@ const TABLE = 'Trybesmith.Products';
 
 const productModel = {
   async addProduct(name: IAddProduct['name'], amount: IAddProduct['amount']): Promise<IAddProduct> {
-    const sql = `INSERT INTO ${TABLE} (name, amount)`;
+    const sql = `INSERT INTO ${TABLE} (name, amount) VALUES (?, ?)`;
     const [{ insertId }] = await connection.execute<ResultSetHeader>(sql, [name, amount]);
     return { id: insertId, name, amount };
   },
