@@ -7,8 +7,8 @@ const productService = {
     return { code: 201, data: result };
   },
 
-  async getAll() {
-    const result = await productModel.getAll();
+  async listProducts() {
+    const result = await productModel.listProducts();
     return { code: 200, data: result };
   },
 };

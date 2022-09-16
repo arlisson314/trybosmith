@@ -8,8 +8,8 @@ const productsController = {
     return res.status(code).json(data);
   },
 
-  async getAll(_req: Request, res: Response) {
-    const { code, data } = await productService.getAll();
+  async listProducts(_req: Request, res: Response) {
+    const { code, data } = await productService.listProducts();
     return res.status(code).json(data);
   },
 };
