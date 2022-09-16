@@ -11,7 +11,7 @@ const productModel = {
     return { id: insertId, name, amount };
   },
 
-  async getAll(): Promise<IgetProducts[]> {
+  async listProducts(): Promise<IgetProducts[]> {
     const sql = `SELECT id, name, amount, orderId FROM ${TABLE}`;
     const [products] = await connection.execute<RowDataPacket[]>(sql);
     return products as IgetProducts[];
