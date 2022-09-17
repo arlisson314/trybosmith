@@ -9,8 +9,8 @@ const userService = {
     level: IUser['level'], 
     password: IUser['password'],
   ) {
-    await userModel.addUser(username, classe, level, password);
-    const token = tokenGenerate(username);
+    const { id } = await userModel.addUser(username, classe, level, password);
+    const token = tokenGenerate(id);
     return { code: 201, data: { token } };
   },
 };
