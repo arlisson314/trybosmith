@@ -1,7 +1,8 @@
+import { ResultSetHeader } from 'mysql2';
 import { IUser } from '../types';
 import connection from './connection';
 
-const TABLE = 'Trybesmith.Users';
+const TABLE_USER = 'Trybesmith.Users';
 
 const userModel = {
   async addUser(
@@ -10,8 +11,12 @@ const userModel = {
     level: IUser['level'], 
     password: IUser['password'],
   ) {
-    const sql = `INSERT INTO ${TABLE} (username, classe, level, password) VALUES (?, ?, ?, ?)`;
-    await connection.execute(sql, [username, classe, level, password]);
+    const sql = `INSERT INTO ${TABLE_USER} (username, classe, level, password) VALUES (?, ?, ?, ?)`;
+    const [{ insertId }] = await connection.execute<ResultSetHeader>(
+      sql,
+      [username, classe, level, password],
+    );
+    return { id: insertId };
   },
 };
 
