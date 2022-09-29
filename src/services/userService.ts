@@ -1,18 +1,19 @@
+import { StatusCodes } from 'http-status-codes';
 import userModel from '../models/userModel';
 import { IUser } from '../types';
-import tokenGenerate from './genereteToken';
+import tokenGenerate from './tokenGenerate';
 
 const userService = {
   async addUser(
-    username: IUser['username'], 
+    username: IUser['username'],
     classe: IUser['classe'],
-    level: IUser['level'], 
+    level: IUser['level'],
     password: IUser['password'],
   ) {
     const { id } = await userModel.addUser(username, classe, level, password);
     const token = tokenGenerate(id);
-    return { code: 201, data: { token } };
+    return { code: StatusCodes.CREATED, data: { token } };
   },
 };
 
-export default userService; 
+export default userService;

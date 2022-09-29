@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
-import { IUser } from '../types';
+import { Idexsable } from '../types';
 
-const tokenGenerate = (id: IUser['id']) => {
+const tokenGenerate = (id: Idexsable['id']): string => {
+  // const stId = JSON.stringify(id);
   const PAYLOAD = { id, admin: false };
   const SECRET = 'Comed!4nt3';
   const CONFIG = { expiresIn: '7d' };
@@ -10,3 +11,4 @@ const tokenGenerate = (id: IUser['id']) => {
 };
 
 export default tokenGenerate;
+// username: IUser['username']
