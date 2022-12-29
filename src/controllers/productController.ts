@@ -4,7 +4,8 @@ import { IAddProduct } from '../types';
 
 const productsController = {
   async addProduct(req: Request, res: Response) {
-    const { name, amount } = req.body as IAddProduct;
+    const body = req.body as IAddProduct;
+    const { name, amount } = await productService.ValidateProducts(body);
     const { code, data } = await productService.addProduct(name, amount);
     return res.status(code).json(data);
   },

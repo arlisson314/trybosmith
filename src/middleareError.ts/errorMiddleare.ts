@@ -4,7 +4,6 @@ import { StatusCodes } from 'http-status-codes';
 const errorMiddleare: ErrorRequestHandler = (err, _req, res, next) => {
   const { name, message, details } = err;
   console.log(`name: ${name}`);
-
   switch (name) {
     case 'ValidationError':
       res.status(StatusCodes.BAD_REQUEST).json({ message: details[0].message });
