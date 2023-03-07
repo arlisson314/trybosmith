@@ -6,9 +6,9 @@ const TABLE_USER = 'Trybesmith.Users';
 
 const userModel = {
   async addUser(
-    username: IUser['username'], 
+    username: IUser['username'],
     classe: IUser['classe'],
-    level: IUser['level'], 
+    level: IUser['level'],
     password: IUser['password'],
   ) {
     const sql = `INSERT INTO ${TABLE_USER} (username, classe, level, password) VALUES (?, ?, ?, ?)`;
